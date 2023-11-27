@@ -32,7 +32,6 @@ export const ButtonCheckout: FC = () => {
         {({ quantity }) =>
           quantity ? (
             <CheckoutLink
-              hostedCheckout
               data-test-id="button-checkout"
               aria-disabled="false"
               className={
@@ -40,6 +39,8 @@ export const ButtonCheckout: FC = () => {
               }
               label={label}
               target={isEmbedded() ? "_top" : undefined}
+              hostedCheckout={false}
+              href="checkout.athletic-house.pl"
             />
           ) : (
             <ButtonCheckoutDisabled />
