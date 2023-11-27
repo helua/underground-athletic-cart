@@ -40,7 +40,6 @@ export const ButtonCheckout: FC = () => {
               label={label}
               target={isEmbedded() ? "_top" : undefined}
               hostedCheckout={false}
-              href="checkout.athletic-house.pl"
             />
           ) : (
             <ButtonCheckoutDisabled />
