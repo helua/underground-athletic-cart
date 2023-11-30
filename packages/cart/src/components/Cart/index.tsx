@@ -23,6 +23,12 @@ const Cart: FC = () => {
     return null
   }
 
+  const checkoutUrl = window.location.href
+  .replace(
+    "https://cart.athletic-house.pl/",
+    "https://checkout.athletic-house.pl/"
+  )
+
   return (
     <CommerceLayer
       accessToken={settings.accessToken}
@@ -31,7 +37,7 @@ const Cart: FC = () => {
       <OrderContainer
         orderId={settings.orderId}
         attributes={{
-          cart_url: settings.cartUrl || window.location.href,
+          cart_url: checkoutUrl,
         }}
         fetchOrder={(order) => {
           // send update event to parent iframe if iframe-resizer is enabled

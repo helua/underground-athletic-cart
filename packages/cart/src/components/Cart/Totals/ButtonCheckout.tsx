@@ -33,13 +33,13 @@ export const ButtonCheckout: FC = () => {
           quantity ? (
             <CheckoutLink
               data-test-id="button-checkout"
+              hostedCheckout={false}
               aria-disabled="false"
               className={
                 "button-base bg-primary text-contrast block rounded-md py-3 px-3"
               }
               label={label}
               target={isEmbedded() ? "_top" : undefined}
-              hostedCheckout={false}
             />
           ) : (
             <ButtonCheckoutDisabled />
