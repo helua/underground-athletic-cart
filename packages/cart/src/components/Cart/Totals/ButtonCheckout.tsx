@@ -33,7 +33,7 @@ export const ButtonCheckout: FC = () => {
           quantity ? (
             <CheckoutLink
               data-test-id="button-checkout"
-              hostedCheckout={false}
+              hostedCheckout
               aria-disabled="false"
               className={
                 "button-base bg-primary text-contrast block rounded-md py-3 px-3"
