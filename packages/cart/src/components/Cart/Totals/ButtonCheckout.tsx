@@ -20,6 +20,10 @@ export const ButtonCheckout: FC = () => {
   const { settings } = useSettings()
   // const checkoutUrl = settings
   console.log(order, settings)
+  let checkoutUrl: string = "";
+  if (order?.cart_url) {
+    checkoutUrl = order?.cart_url.replace("cart", "checkout")
+  }
   return (
     <>
       {!isEmbedded() ? (
@@ -37,7 +41,7 @@ export const ButtonCheckout: FC = () => {
             <CheckoutLink
               data-test-id="button-checkout"
               hostedCheckout={false}
-              href="wwww"
+              href={checkoutUrl}
               aria-disabled="false"
               className={
                 "button-base bg-primary text-contrast block rounded-md py-3 px-3"
