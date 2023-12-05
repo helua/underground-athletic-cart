@@ -10,13 +10,16 @@ import { FC } from "react"
 import { useTranslation } from "react-i18next"
 
 import { ButtonCheckoutDisabled } from "#components/atoms/ButtonCheckoutDisabled"
+import { useSettings } from "#components/SettingsProvider"
 import { isEmbedded } from "#utils/isEmbedded"
 
 export const ButtonCheckout: FC = () => {
   const { t } = useTranslation()
   const label = t("general.gotToCheckoutCta")
   const { order } = useOrderContainer()
-
+  const { settings } = useSettings()
+  // const checkoutUrl = settings
+  console.log(order, settings)
   return (
     <>
       {!isEmbedded() ? (
@@ -34,6 +37,7 @@ export const ButtonCheckout: FC = () => {
             <CheckoutLink
               data-test-id="button-checkout"
               hostedCheckout={false}
+              href="wwww"
               aria-disabled="false"
               className={
                 "button-base bg-primary text-contrast block rounded-md py-3 px-3"
