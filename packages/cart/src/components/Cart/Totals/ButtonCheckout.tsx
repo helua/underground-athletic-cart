@@ -21,9 +21,10 @@ export const ButtonCheckout: FC = () => {
   const { settings } = useSettings()
   // const checkoutUrl = settings
   console.log(order, settings)
-  let checkoutUrl: string = "";
-  if (order?.cart_url) {
-    checkoutUrl = order?.cart_url.replace("cart", "checkout")
+  let checkoutUrl: string = ""
+  const tokenFromcurrentUrl = window.location.href.split("=")[1]
+  if (order?.checkout_url) {
+    checkoutUrl = order?.checkout_url + "?accessToken=" + tokenFromcurrentUrl
   }
   return (
     <>
