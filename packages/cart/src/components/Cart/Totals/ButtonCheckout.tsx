@@ -5,6 +5,7 @@ import {
   PaymentMethodsContainer,
   PaymentSource,
   useOrderContainer,
+  Errors,
 } from "@commercelayer/react-components"
 import { FC } from "react"
 import { useTranslation } from "react-i18next"
@@ -26,15 +27,27 @@ export const ButtonCheckout: FC = () => {
   }
   return (
     <>
-      {!isEmbedded() ? (
-        <div key={order?.total_amount_cents}>
-          <PaymentMethodsContainer>
-            <PaymentMethod expressPayments className="mb-4" loader={<div />}>
-              <PaymentSource loader={<div />} />
-            </PaymentMethod>
-          </PaymentMethodsContainer>
-        </div>
-      ) : null}
+      <div key={order?.total_amount_cents}>
+        <PaymentMethodsContainer>
+          <PaymentMethod expressPayments className="mb-4" loader={<div />}>
+            <PaymentSource loader={<div />} />
+          </PaymentMethod>
+        </PaymentMethodsContainer>
+      </div>
+
+      <Errors
+        resource="line_items"
+        className="block text-xs text-red-400 mb-4"
+        messages={[
+          {
+            code: "VALIDATION_ERROR",
+            resource: "line_items",
+            field: "quantity",
+            message: t("general.quantityNotAvailable"),
+          },
+        ]}
+      />
+
       <LineItemsCount>
         {({ quantity }) =>
           quantity ? (
