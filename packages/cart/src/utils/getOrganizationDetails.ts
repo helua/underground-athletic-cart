@@ -1,4 +1,4 @@
-import { CommerceLayerClient } from "@commercelayer/sdk"
+import type { CommerceLayerClient } from "@commercelayer/sdk"
 
 import { retryCall } from "./retryCall"
 
@@ -31,6 +31,7 @@ const getAsyncOrganization = async (client: CommerceLayerClient) => {
         "favicon_url",
         "gtm_id",
         "gtm_id_test",
+        "config",
       ],
     },
   })
