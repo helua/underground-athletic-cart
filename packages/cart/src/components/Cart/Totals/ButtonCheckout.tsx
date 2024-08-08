@@ -18,17 +18,16 @@ export const ButtonCheckout: FC = () => {
   const { t } = useTranslation()
   const label = t("general.gotToCheckoutCta")
   const { order } = useOrderContainer()
-  const { settings } = useSettings()
-  // const checkoutUrl = settings
-  console.log(order, settings)
-  let checkoutUrl: string = "";
-  if (order?.cart_url) {
-    checkoutUrl = order?.cart_url.replace("cart", "checkout")
+  
+  let checkoutUrl: string | undefined = "";
+  const tokenFromcurrentUrl = window.location.href.split("=")[1]
+
+  if (order?.checkout_url) {
+    checkoutUrl = order.checkout_url + "?accessToken=" + tokenFromcurrentUrl;
   }
-  // //   const tokenFromcurrentUrl = window.location.href.split("=")[1]
-  // if (order?.checkout_url) {
-  //   checkoutUrl = order?.checkout_url + "?accessToken=" + tokenFromcurrentUrl
-  // }
+
+  console.log(order, checkoutUrl)
+
   return (
     <>
       <div key={order?.total_amount_cents}>
